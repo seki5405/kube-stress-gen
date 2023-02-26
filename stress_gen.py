@@ -1,7 +1,10 @@
-from kubernetes import client
-from config_loader import config
+from kubernetes import client, config
+# from config_loader import config
 from job_gen import JobGenerator
 import time
+
+# Load the Kubernetes configuration
+config.load_kube_config()
 
 # Load scenario
 scenario_file = "scenario-2023-02-26.csv"
@@ -33,5 +36,5 @@ while True:
         batch_api.create_namespaced_job(config["namespace"], job)
         print("Created a job: " + job.metadata.name)
         idx += 1
-        
+
     time.sleep(5)
