@@ -1,7 +1,8 @@
 from kubernetes import client
 
 class JobGenerator:
-    def __init__(self, stress_type, stress_level, duration, config):
+    def __init__(self, idx, stress_type, stress_level, duration, config):
+        self.idx = idx
         self.stress_type = stress_type
         self.stress_level = stress_level
         self.duration = duration
@@ -14,7 +15,7 @@ class JobGenerator:
             self.cpu_limit = "1000m"
             self.mem_limit = f"{self.stress_level}Gi"
 
-        self.job_name = f"stressng-{self.stress_type}-{self.stress_level}-{self.duration}"
+        self.job_name = f"stressng-{self.stress_type}-{self.stress_level}l-{self.duration}m-{self.idx}th"
         self.image = "seki5405/stress-ng-image"
 
         self.command = f"stress-ng --all {self.stress_level}"

@@ -33,7 +33,7 @@ while True:
         # Create a job
         job_generator = JobGenerator(current_job[1], int(current_job[2]), int(current_job[3]), config)
         job = job_generator.generate_job()
-        batch_api.create_namespaced_job(config["namespace"], job)
+        batch_api.create_namespaced_job(namespace="default", body=job)
         print("Created a job: " + job.metadata.name)
         idx += 1
 
