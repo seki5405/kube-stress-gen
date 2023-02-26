@@ -31,7 +31,7 @@ while True:
     # If the current minute is equal to the minute of the current job, create the job
     if current_minute >= int(current_job[-1]):
         # Create a job
-        job_generator = JobGenerator(current_job[1], int(current_job[2]), int(current_job[3]), config)
+        job_generator = JobGenerator(current_job[0], current_job[1], int(current_job[2]), int(current_job[3]), config)
         job = job_generator.generate_job()
         batch_api.create_namespaced_job(namespace="default", body=job)
         print("Created a job: " + job.metadata.name)
