@@ -22,7 +22,7 @@ scenario_start_time = time.time()
 
 # While running this program, checking how many minutes have passed since the start of the scenario
 idx = 0
-while True:
+while idx < len(scenario):
     # Print the current minute from the start of the scenario
     current_elpased_time = time.time() - scenario_start_time
     current_elpased_minute = int((time.time() - scenario_start_time) / 60)
