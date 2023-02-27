@@ -23,7 +23,7 @@ for i in range(NUM_JOBS):
     stress_type = random.choice(STRESS_TYPE)
     stress_level = random.randint(1, STRESS_LEVEL_MAX)
     duration = random.randint(1, STRESS_DURATION_MAX)
-    start_time = random.randint(0, RUN_TIME)
+    start_time = random.randint(0, RUN_TIME * 60)
     
     scenario.append([stress_type, stress_level, duration, start_time])
 

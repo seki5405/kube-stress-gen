@@ -22,7 +22,7 @@ class JobGenerator:
         if self.stress_type == "cpu":
             self.command = f"stress-ng --cpu {self.stress_level} --timeout {self.duration}m"
         elif self.stress_type == "vm":
-            self.command = f"stress-ng --vm {self.stress_level} --vm-bytes {self.mem_limit_stressng} --timeout {self.duration}m"
+            self.command = f"stress-ng --vm {self.stress_level} --vm-bytes {self.mem_limit_stressng} --vm-keep --timeout {self.duration}m"
         # self.command = f"stress-ng --all {self.stress_level}"
 
     def generate_job(self):

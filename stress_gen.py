@@ -7,7 +7,7 @@ import time
 config.load_kube_config()
 
 # Load scenario
-scenario_file = "scenario-2023-02-26.csv"
+scenario_file = "scenario-2023-02-27.csv"
 scenario_path = "scenarios/" + scenario_file
 scenario = []
 with open(scenario_path, "r") as f:
@@ -24,12 +24,14 @@ scenario_start_time = time.time()
 idx = 0
 while True:
     # Print the current minute from the start of the scenario
-    current_minute = int((time.time() - scenario_start_time) / 60)
-    print("Current minute: " + str(current_minute))
+    current_elpased_time = time.time() - scenario_start_time
+    current_elpased_minute = int((time.time() - scenario_start_time) / 60)
+    current_elpased_second = int((time.time() - scenario_start_time) % 60)
+    print("Current elpased time: " + str(current_elpased_minute) + "m :" + str(current_elpased_second) + "s (Elapsed time: " + str(current_elpased_time) + "s)")
 
     current_job = scenario[idx]
     # If the current minute is equal to the minute of the current job, create the job
-    if current_minute >= int(current_job[-1]):
+    if current_elpased_time >= int(current_job[-1]):
         # Create a job
         job_generator = JobGenerator(current_job[0], current_job[1], int(current_job[2]), int(current_job[3]), config)
         job = job_generator.generate_job()
