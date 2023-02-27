@@ -27,7 +27,7 @@ while idx < len(scenario):
     current_elpased_time = time.time() - scenario_start_time
     current_elpased_minute = int((time.time() - scenario_start_time) / 60)
     current_elpased_second = int((time.time() - scenario_start_time) % 60)
-    print("Current elpased time: " + str(current_elpased_minute) + "m :" + str(current_elpased_second) + "s (Elapsed time: " + str(current_elpased_time) + "s)")
+    print("Current elpased time: " + str(current_elpased_minute) + "m :" + str(current_elpased_second) + "s (Elapsed time: " + str(int(current_elpased_time)) + "s)")
 
     current_job = scenario[idx]
     # If the current minute is equal to the minute of the current job, create the job
